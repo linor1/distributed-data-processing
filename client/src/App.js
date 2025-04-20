@@ -9,15 +9,26 @@ function App() {
 		setFile(e.target.files[0]);
 	};
 	
-	const handleOnSubmit = (e) => {
+	const handleOnSubmit = async (e) => {
 		e.preventDefault();
 		if (file) {
-			fr.onload = function(event) {
-				const csvOutput = event.target.result;
-				console.log(csvOutput)
-			};
-			fr.readAsText(file);
+			console.log('uploading file.. ');
+			// form data
+			const formData = new FormData();
+			formData.append('file', file);
 			
+			try {
+				fetch("http://localhost:5000/upload", {
+					method: "POST",
+					body: formData,
+				})
+				.then((res) => res.json)
+				.then((result) => console.log("Success:", result))
+				.then((err) =>console.error("Error:", err))
+
+			} catch(error) {
+				console.error(error);
+			}
 		}
 	};
 	return(
