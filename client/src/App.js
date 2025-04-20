@@ -22,12 +22,12 @@ function App() {
 					method: "POST",
 					body: formData,
 				})
-				.then((res) => res.json)
+				.then((res) => res.json())
 				.then((result) => console.log("Success:", result))
 				.then((err) =>console.error("Error:", err))
 
 			} catch(error) {
-				console.error(error);
+				console.error("error: ", error);
 			}
 		}
 	};
