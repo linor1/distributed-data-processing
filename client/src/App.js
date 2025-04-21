@@ -24,7 +24,7 @@ function App() {
 				})
 				.then((res) => res.json())
 				.then((result) => console.log("Success:", result))
-				.then((err) =>console.error("Error:", err))
+				.catch((err) =>console.error("Error:", err))
 
 			} catch(error) {
 				console.error("error: ", error);
