@@ -10,8 +10,8 @@ const upload = multer({ storage: storage });
 
 app.post('/upload',upload.single("file"), (req, res) => {
 	console.log("hello server");
+	console.log(req.file);
 	console.log(req.body);
-	console.log("hello server");
 	res.json({ status: "success" });
 })
 
